@@ -96,3 +96,36 @@ footer nav {
     $table-border-color
   );
 }
+
+// Style file input upload button (in webkit)
+$form-control-file-btn-color: theme-color(primary) !default;
+.form-control-file {
+  &::-webkit-file-upload-button {
+    font-family: $btn-font-family;
+    font-weight: $btn-font-weight;
+    border: $btn-border-width solid $form-control-file-btn-color;
+    color: color-yiq($form-control-file-btn-color);
+    @include gradient-bg($form-control-file-btn-color);
+    @include button-size(
+      $btn-padding-y-sm,
+      $btn-padding-x-sm,
+      $btn-font-size-sm,
+      $btn-line-height-sm,
+      $btn-border-radius-sm
+    );
+    @include box-shadow($btn-box-shadow);
+    @include transition($btn-transition);
+    &:focus {
+      outline: 0;
+      box-shadow: $btn-focus-box-shadow;
+    }
+  }
+  &:not(disabled)::-webkit-file-upload-button:hover {
+    color: color-yiq(darken($form-control-file-btn-color, 7.5%));
+    @include gradient-bg(darken($form-control-file-btn-color, 7.5%));
+  }
+  &:disabled::-webkit-file-upload-button {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+}
